@@ -1,0 +1,28 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Active Sefton Redirect</title>
+
+  <!-- PWA meta -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#0a0a0a" />
+</head>
+<body>
+  <h1>Install Active Sefton App</h1>
+  <p>Use your browser's menu to 'Add to Home Screen'.</p>
+
+  <script>
+    // Check if app is launched in standalone mode (i.e., from home screen)
+    const isStandalone =
+      window.matchMedia('(display-mode: standalone)').matches ||
+      window.navigator.standalone === true;
+
+    if (isStandalone) {
+      window.location.replace('https://activesefton.gladstonego.cloud/site-finder');
+    }
+  </script>
+</body>
+</html>

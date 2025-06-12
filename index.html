@@ -26,13 +26,23 @@
 
   <script>
     // Check if app is launched in standalone mode (i.e., from home screen icon)
-    const isStandalone =
+    const isStandalone = 
+      window.navigator.standalone === true ||
       window.matchMedia('(display-mode: standalone)').matches ||
-      window.navigator.standalone === true;
+      document.referrer === "" && window.location.pathname !== "/";
 
-    if (isStandalone) {
-      // When opened from home screen icon, redirect to site-finder
-      window.location.replace('https://activesefton.gladstonego.cloud/site-finder');
+    console.log('Standalone check:', {
+      navigatorStandalone: window.navigator.standalone,
+      displayMode: window.matchMedia('(display-mode: standalone)').matches,
+      referrer: document.referrer,
+      pathname: window.location.pathname,
+      isStandalone: isStandalone
+    });
+
+    // Force redirect if any standalone indicator is true
+    if (isStandalone || window.navigator.standalone === true) {
+      console.log('Redirecting to site-finder...');
+      window.location.href = 'https://activesefton.gladstonego.cloud/site-finder';
     }
 
     function installApp() {

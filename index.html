@@ -12,9 +12,32 @@
 </head>
 <body>
   <div style="text-align: center; padding: 50px; font-family: Arial, sans-serif;">
-    <button style="background-color: #007bff; color: white; border: none; padding: 15px 30px; font-size: 16px; border-radius: 5px; cursor: pointer;">
+    <button onclick="handleButtonClick()" style="background-color: #007bff; color: white; border: none; padding: 15px 30px; font-size: 16px; border-radius: 5px; cursor: pointer;">
       Put membership link on homepage
     </button>
   </div>
+
+  <div style="text-align: center; padding: 50px; font-family: Arial, sans-serif;">
+    <button onclick="installApp()" style="background-color: #007bff; color: white; border: none; padding: 15px 30px; font-size: 16px; border-radius: 5px; cursor: pointer;">
+      Install as App
+    </button>
+    <p style="margin-top: 20px; color: #666;">Add this page to your home screen to create a shortcut.</p>
+  </div>
+
+  <script>
+    // Check if app is launched in standalone mode (i.e., from home screen icon)
+    const isStandalone =
+      window.matchMedia('(display-mode: standalone)').matches ||
+      window.navigator.standalone === true;
+
+    if (isStandalone) {
+      // When opened from home screen icon, redirect to site-finder
+      window.location.replace('https://activesefton.gladstonego.cloud/site-finder');
+    }
+
+    function installApp() {
+      alert('Use your browser menu to "Add to Home Screen" or "Install App"');
+    }
+  </script>
 </body>
 </html>
